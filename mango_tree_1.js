@@ -1,7 +1,7 @@
 "use strict"
 
 function getRandomNumber() {
-  var random = Math.round((Math.random()+0.5)*8)
+  var random = Math.round((Math.random())*8)
   return random
 }
 
@@ -10,8 +10,9 @@ class MangoTree {
   // Initialize a new MangoTree
   constructor(property = {}) {
     this._name = property
-    this._age = getRandomNumber()
-    this._height = property
+    this._maxAge = getRandomNumber()
+    this._age = 0
+    this._height = getRandomNumber()
     this._fruits = getRandomNumber()
     this._harvested = getRandomNumber()
     this._alive = true
@@ -36,8 +37,12 @@ class MangoTree {
 
   // Grow the tree
   grow() {
-    for(var i=0; i <= this._age; i++){
-      console.log(`Year ${i} ${this._name} | fruits produce : ${this._fruits * getRandomNumber()} | fruits harvested : ${this._harvested* getRandomNumber()}`);
+    this._age += 1
+    while(!this._height){
+      this._height = this._height + Math.round((Math.random())*6)/10
+    }
+    if (this._age >= this._maxAge){
+      this._alive = false
     }
   }
 
@@ -59,14 +64,19 @@ class MangoTree {
 
 class Mango {
   // Produce a mango
-  constructor() {
-
+  constructor(property) {
+    this._mango = property
   }
 }
 
-var mango = new MangoTree("mangga")
-console.log(mango.name);
-console.log(mango.age);
-console.log(mango.fruits);
-mango.harvest()
-mango.grow()
+var tree = new MangoTree()
+console.log(`The tree is alive! :smile:`);
+
+do{
+  tree.grow()
+  tree.produceMangoes()
+
+  console.log(`[Year ${tree._age} Report] Height = ${tree._height += getRandomNumber()} m | Fruits harvested = ${tree._harvested + getRandomNumber()}`);
+} while (tree._alive != false)
+
+console.log(`The tree has met its end. :sad:`);
