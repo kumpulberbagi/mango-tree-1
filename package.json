@@ -1,0 +1,24 @@
+{
+  "name": "mango-tree-1",
+  "version": "1.0.0",
+  "description": "tugas week 1 - day 3",
+  "main": "mango_tree_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanford-fox-2016/mango-tree-1.git"
+  },
+  "author": "Ken Duigraha Putra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blanford-fox-2016/mango-tree-1/issues"
+  },
+  "homepage": "https://github.com/blanford-fox-2016/mango-tree-1#readme",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2016": "^6.16.0"
+  }
+}
