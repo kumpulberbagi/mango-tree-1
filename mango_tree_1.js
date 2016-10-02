@@ -58,12 +58,16 @@ class MangoTree {
 
   // Produce some mangoes
   produceMangoes() {
-      this._fruitsCollection = this.lastFruits + Math.floor(getRandomNumber()*10)
+      this._fruitsCollection = this.lastFruits + Math.floor(getRandomNumber()*10)+1
   }
 
   // Get some fruits
   harvest() {
-    this._harvested = Math.floor(getRandomNumber()*this._fruitsCollection+1)
+    if(this._fruitsCollection > 2){
+      this._harvested = Math.floor(getRandomNumber()*this._fruitsCollection+1)
+    }else{
+      this._harvested = 0
+    }
   }
 }
 
