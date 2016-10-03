@@ -1,104 +1,80 @@
 "use strict"
 
 class MangoTree {
-
   // Initialize a new MangoTree
   constructor() {
     this._age = 0
-    this._height = 0
-    this._totalPicked = 0
+    this._height = 0.0
+    this._fruits = []
     this._healthyStatus = true
-    this._fruitsCollection = 0
     this._harvested = 0
-    this._lastFruits = 0;
   }
 
   // Get current states here
-
-  get age(){
+  getAge(){
     return this._age
   }
 
-  get height(){
+  getHeight(){
     return this._height.toFixed(1)
   }
 
-  get fruitsCollection(){
-    return this._fruitsCollection
+  getFruits(){
+    return this._fruits
   }
 
-  get healtyhyStatus(){
+  getHealtyhyStatus(){
     return this._healthyStatus
   }
 
-  get harvested(){
-    return this._harvested
-  }
-
-  get lastFruits(){
-    return this._lastFruits
-  }
   // Grow the tree
   grow() {
     this._age += 1
-    this._height += Math.floor(getRandomNumber()*10)+1 / 10
-    this.produceMangoes()
-    this.harvest()
 
-    this._lastFruits = this._fruitsCollection - this._harvested
+    if(this._age <= 10){
+      this._height += getRandomNumber()+1 / 10
+    }
 
-    //this._fruitsCollection -= this._harvested
-
-    if(this._lastFruits === 0){
+    if(this._age === 20){
       this._healthyStatus = false
-    }else{
-      this._healthyStatus = true
     }
   }
 
   // Produce some mangoes
   produceMangoes() {
-      this._fruitsCollection = this.lastFruits + Math.floor(getRandomNumber()*10)+1
+    for(var i = 0 ; i < getRandomNumber(); i++){
+      this._fruits.push(new Mango())
+    }
+    return this._fruits
   }
 
   // Get some fruits
   harvest() {
-    if(this._fruitsCollection > 2){
-      this._harvested = Math.floor(getRandomNumber()*this._fruitsCollection+1)
-    }else{
-      this._harvested = 0
-    }
+    this._harvested = this._fruits.length
+    this._fruits = []
+    return this._harvested
   }
 }
 
 class Mango {
   // Produce a mango
-  constructor(fruitQuality) {
-    this._fruitQuality = fruitQuality
+  constructor() {
+    this._fruitQuality =  getRandomNumber()
   }
 }
 
 function getRandomNumber() {
   //untuk variabel pertumbuhan, jumlah buah, dll
-  return Math.random()
+  return Math.floor(Math.random()*10)
 }
 
 var tree = new MangoTree()
 console.log("This Tree is alive !");
-// console.log(getRandomNumber());
-// console.log(tree.harvest());
-// console.log(tree.fruitsCollection);
-// console.log(tree.fruitsCollection);
-// console.log(tree.fruitsCollection);
-// console.log(tree.fruitsCollection);
-//var a = 0
+
 do{
   tree.grow()
-  //tree.produceMangoes()
-  //a++
-  console.log("[Year " + tree._age + " Report] Height = "
-   + tree.height + "| \nFruits Harvested = " + tree.harvested +
-   " Fruits Collection = " + tree.fruitsCollection +
- " Last Counted Fruits = " + tree.lastFruits)
+  tree.produceMangoes()
+  console.log("[Year " + tree.getAge() + " Report] Height = "
+   + tree.getHeight() + "| Fruits Harvested = " + tree.harvest())
  console.log("\n=====================================================\n")
-}while(tree.healtyhyStatus != false)
+}while(tree.getHealtyhyStatus() != false)
