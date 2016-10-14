@@ -1,0 +1,25 @@
+{
+  "name": "mango-tree-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mango_tree_1.js",
+  "dependencies": {
+    "babel-cli": "^6.16.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanford-fox-2016/mango-tree-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blanford-fox-2016/mango-tree-1/issues"
+  },
+  "homepage": "https://github.com/blanford-fox-2016/mango-tree-1#readme"
+}
