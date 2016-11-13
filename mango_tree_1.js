@@ -1,32 +1,52 @@
 "use strict"
 
+function ramdomHeight() {
+    return Math.random() * 1
+}
+
+function ramdomFruits() {
+    return Math.floor(Math.random() * 15)
+}
+
 class MangoTree {
-  
-  // Initialize a new MangoTree
-  constructor() {
-  }
+    constructor() {
+        this._heigth = ramdomHeight();
+        this._getFruits = ramdomFruits();
+        this._status = true;
+        this._age = 0;
+    }
 
-  // Get current states here
+    grow() {
+        this._age++
+            if (this._age <= 10) {
+                this._heigth += ramdomHeight();
+            } else
+        if (this._age == 20) {
+            this._status = false;
+        }
+    }
 
-  // Grow the tree
-  grow() {
-  }
 
-  // Produce some mangoes
-  produceMangoes() {
-  }
+    produceMangoes() {
+        this._getFruits = ramdomFruits();
+    }
 
-  // Get some fruits
-  harvest() {
-  }
+    getHealtyStatus() {
+        if (this._age == 20) {
+            this._status = false;
+        }
+    }
+
 }
 
-class Mango {
-  // Produce a mango
-  constructor() {
-  }
-}
+var tree = new MangoTree()
+console.log(`The tree is alive! :smile:`)
 
-function getRandomNumber() {
-}
+do {
+    tree.grow();
+    tree.produceMangoes();
 
+    console.log(`[Year ${tree._age} Report] Height = ${tree._heigth.toFixed(2)} Meter | Fruits Harvested = ${tree._getFruits}`);
+} while (tree._status != false)
+
+console.log(`The tree has met its end. :sad:`);
