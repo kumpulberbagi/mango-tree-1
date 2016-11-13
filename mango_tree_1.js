@@ -1,9 +1,15 @@
 "use strict"
 
+var ramdom = Math.ceil(Math.ramdom()*20);
+
 class MangoTree {
-  
+
   // Initialize a new MangoTree
-  constructor() {
+  constructor(age,height,getFruits,status) {
+this.age = age;
+this.heigth = height;
+this.getFruits = getFruits;
+this.status = status;
   }
 
   // Get current states here
@@ -29,4 +35,3 @@ class Mango {
 
 function getRandomNumber() {
 }
-
