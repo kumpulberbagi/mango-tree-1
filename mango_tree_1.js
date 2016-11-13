@@ -1,37 +1,52 @@
 "use strict"
 
-var ramdom = Math.ceil(Math.ramdom()*20);
+function ramdomHeight() {
+    return Math.random() * 1
+}
+
+function ramdomFruits() {
+    return Math.floor(Math.random() * 15)
+}
 
 class MangoTree {
+    constructor() {
+        this._heigth = ramdomHeight();
+        this._getFruits = ramdomFruits();
+        this._status = true;
+        this._age = 0;
+    }
 
-  // Initialize a new MangoTree
-  constructor(age,height,getFruits,status) {
-this.age = age;
-this.heigth = height;
-this.getFruits = getFruits;
-this.status = status;
-  }
+    grow() {
+        this._age++
+            if (this._age <= 10) {
+                this._heigth += ramdomHeight();
+            } else
+        if (this._age == 20) {
+            this._status = false;
+        }
+    }
 
-  // Get current states here
 
-  // Grow the tree
-  grow() {
-  }
+    produceMangoes() {
+        this._getFruits = ramdomFruits();
+    }
 
-  // Produce some mangoes
-  produceMangoes() {
-  }
+    getHealtyStatus() {
+        if (this._age == 20) {
+            this._status = false;
+        }
+    }
 
-  // Get some fruits
-  harvest() {
-  }
 }
 
-class Mango {
-  // Produce a mango
-  constructor() {
-  }
-}
+var tree = new MangoTree()
+console.log(`The tree is alive! :smile:`)
 
-function getRandomNumber() {
-}
+do {
+    tree.grow();
+    tree.produceMangoes();
+
+    console.log(`[Year ${tree._age} Report] Height = ${tree._heigth.toFixed(2)} Meter | Fruits Harvested = ${tree._getFruits}`);
+} while (tree._status != false)
+
+console.log(`The tree has met its end. :sad:`);
